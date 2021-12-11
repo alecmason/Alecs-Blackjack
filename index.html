@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/main.js"></script>
     <title>Alec's Blackjack</title>
 </head>
 <body>
-    <div class="welcome">WELCOME TO ALEC'S BLACKJACK!</div>
+    <h1>WELCOME TO ALEC'S BLACKJACK!</h1>
+
     <div class="play-area">
-        <div class="dealers-hand">Dealers Hand</div>
+
+        <h2>Dealers Hand<h2>
         <div class="play-cards">
-            <div class="dealers-cards">Dealers Cards</div>
-            <div class="player-cards">Players Cards</div>
+            <div class="dealers-hand" id="dealers-hand-container"></div>
+
+            <div class="players-hand" id="players-hand-container"></div>
         </div>
-        <div class="players-hand">Players Hand</div>
+        <h2>Your Hand</h2>
+
         <div id="player-commands">
             <button id="hit-btn">Hit</button> 
             <button id="stay-btn">Stay</button>

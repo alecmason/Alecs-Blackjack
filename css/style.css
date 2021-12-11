@@ -1,6 +1,35 @@
 body {
 	display: flex;
-	flex-direction: colu;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: rgb(38, 20, 43);
+}
+
+h1 {
+	background-color: red;
+	color: gold;
+	margin: auto;
+	padding: 2.5%;
+	border: solid;
+	border-radius: 10%;
+}
+
+.play-area {
+	display: flex;
+	flex-direction: column;
+	background-color: darkgreen;
+	padding: 25%;
+	border: solid;
+	border-radius: 5%;
+}
+
+.player-commands {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.play-cards {
+	padding: 10%;
 }
