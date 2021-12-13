@@ -20,15 +20,22 @@ h1 {
 h2 {
 	display: flex;
 	justify-content: center;
+	color: white;
 }
 
 .play-area {
 	display: flex;
 	flex-direction: column;
 	background-color: darkgreen;
-	padding: 25%;
+	padding: 15%;
 	border: solid;
 	border-radius: 5%;
+}
+
+.play-cards {
+	display: flex;
+	flex-direction: column;
+	padding: 10%;
 }
 
 #players-hand-container {
@@ -47,8 +54,5 @@ h2 {
 	justify-content: space-around;
 }
 
-.play-cards {
-	display: flex;
-	padding: 10%;
-}
+
 

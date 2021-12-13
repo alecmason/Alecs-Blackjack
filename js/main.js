@@ -52,17 +52,6 @@ function getNewShuffledDeck() {
 }
 
 
-// function makePlayerHand(){}
-
-
-function playerHit() {
-    console.log('hit button');
-}
-
-function playerStay() {
-    console.log('stay button');
-}
-
 
 init();
 
@@ -89,6 +78,16 @@ function dealCards(hand, container) {
     renderDeckInContainer(hand, container);
 };
 
+function playerHit() {
+    console.log('hit button');
+    const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
+    playersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);
+    renderDeckInContainer(playersHand, playerContainer);
+}
+
+function playerStay() {
+    console.log('stay button');
+}
 
 function render() {
     dealCards(playersHand, playerContainer);
