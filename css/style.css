@@ -21,13 +21,14 @@ h2 {
 	display: flex;
 	justify-content: center;
 	color: white;
+	margin: 5px;
 }
 
 .play-area {
 	display: flex;
 	flex-direction: column;
 	background-color: darkgreen;
-	padding: 15%;
+	padding: 5% 15% 5% 15%;
 	border: solid;
 	border-radius: 5%;
 }
@@ -35,12 +36,16 @@ h2 {
 .play-cards {
 	display: flex;
 	flex-direction: column;
-	padding: 10%;
+}
+
+.card {
+	margin: 5px;
 }
 
 #players-hand-container {
 	display: flex;
 	flex-direction: row;
+	border: 4px dotted gray;
 }
 
 #dealers-hand-container {
@@ -56,3 +61,24 @@ h2 {
 
 
 
+#hit-btn {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+  }
+
+#stay-btn {
+	background-color: #ff0000; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+  }

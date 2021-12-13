@@ -75,23 +75,44 @@ function dealCards(hand, container) {
         const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
         hand.push(shuffledDeck.splice(rndIdx, 1)[0]);
     }
-    renderDeckInContainer(hand, container);
 };
 
 function playerHit() {
-    console.log('hit button');
-    const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
-    playersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);
-    renderDeckInContainer(playersHand, playerContainer);
+    if (playersCardScore < 21) {
+        const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
+        playersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);   
+    }
+
+    if (dealersCardScore < 17) {
+        const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
+        dealersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);   
+    } 
+    render();
+
+    playersCardScore = calculateCardScore(playersHand);
+    dealersCardScore = calculateCardScore(dealersHand);
+
+    checkCardScore(playersCardScore, dealersCardScore);
 }
 
 function playerStay() {
     console.log('stay button');
 }
 
+function calculateCardScore(hand){
+    return hand.reduce((a,b) => a + b.value, 0);
+}
+
+function checkCardScore(playerScore, dealerScore) {
+    if (dealersCardScore === 21) {
+        console.log('Dealer wins with 21');
+        // overlay message and restart game button
+    }
+}
+
 function render() {
-    dealCards(playersHand, playerContainer);
-    dealCards(dealersHand, dealerContainer);
+    renderDeckInContainer(playersHand, playerContainer);
+    renderDeckInContainer(dealersHand, dealerContainer);
   }
 
 function init() {
@@ -99,5 +120,9 @@ function init() {
     dealersHand = [];
     winner = null;
     shuffledDeck = getNewShuffledDeck();
+    dealCards(playersHand, playerContainer);
+    dealCards(dealersHand, dealerContainer);
+    playersCardScore = calculateCardScore(playersHand);
+    dealersCardScore = calculateCardScore(dealersHand);
     render();
 }
