@@ -7,12 +7,19 @@ body {
 }
 
 h1 {
+	display: flex;
+	justify-content: center;
 	background-color: red;
 	color: gold;
 	margin: auto;
 	padding: 2.5%;
 	border: solid;
 	border-radius: 10%;
+}
+
+h2 {
+	display: flex;
+	justify-content: center;
 }
 
 .play-area {
@@ -24,12 +31,24 @@ h1 {
 	border-radius: 5%;
 }
 
-.player-commands {
+#players-hand-container {
+	display: flex;
+	flex-direction: row;
+}
+
+#dealers-hand-container {
+	display: flex;
+	flex-direction: row;
+}
+
+#player-commands {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 }
 
 .play-cards {
+	display: flex;
 	padding: 10%;
 }
+

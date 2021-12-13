@@ -10,7 +10,8 @@ let shuffledDeck, dealersHand, playersHand = [];
 let playersCardScore, dealersCardScore;
 
 /* cached elements */
-const playerContainer = document.getElementById('player-hand-container');
+const playerContainer = document.getElementById('players-hand-container');
+const dealerContainer = document.getElementById('dealers-hand-container');
 
 /* event listeners */
 let hitBtnEl = document.getElementById('hit-btn')
@@ -50,7 +51,6 @@ function getNewShuffledDeck() {
     return newShuffledDeck;
 }
 
-init();
 
 // function makePlayerHand(){}
 
@@ -63,11 +63,8 @@ function playerStay() {
     console.log('stay button');
 }
 
-// function render();
-// function init() {
 
-// };
-
+init();
 
 function renderDeckInContainer(deck, container) {
 container.innerHTML = '';
@@ -84,22 +81,24 @@ deck.forEach(function(card) {
 container.innerHTML = cardsHtml;
 }
 
-function getPlayerCards() {
+function dealCards(hand, container) {
     for (i = 0; i < 2; i++) {
-        const rndIdx = Math.floor(Math.random() * masterDeck.length);
-        playersHand.push(masterDeck.splice(rndIdx, 1)[0]);
+        const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
+        hand.push(shuffledDeck.splice(rndIdx, 1)[0]);
     }
-    renderDeckInContainer(playersHand, playerContainer);
+    renderDeckInContainer(hand, container);
 };
 
 
 function render() {
-    getPlayerCards(); 
+    dealCards(playersHand, playerContainer);
+    dealCards(dealersHand, dealerContainer);
   }
 
 function init() {
     playersHand = [];
+    dealersHand = [];
     winner = null;
-    getPlayerCards();
+    shuffledDeck = getNewShuffledDeck();
     render();
 }
