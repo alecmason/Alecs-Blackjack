@@ -18,6 +18,7 @@ let hitBtnEl = document.getElementById('hit-btn')
 let stayBtnEl = document.getElementById('stay-btn')
     .addEventListener('click', playerStay);
 
+    // let playAgainEl = document.getElementById('play-again-btn');
 
 /* functions */
 function buildMasterDeck() {
@@ -49,10 +50,56 @@ function getNewShuffledDeck() {
     return newShuffledDeck;
 }
 
+init();
+
+// function makePlayerHand(){}
+
+
 function playerHit() {
     console.log('hit button');
 }
 
 function playerStay() {
     console.log('stay button');
+}
+
+// function render();
+// function init() {
+
+// };
+
+
+function renderDeckInContainer(deck, container) {
+container.innerHTML = '';
+// Let's build the cards as a string of HTML
+let cardsHtml = '';
+deck.forEach(function(card) {
+    cardsHtml += `<div class="card ${card.face}"></div>`;
+});
+
+// Or, use reduce to 'reduce' the array into a single thing - in this case a string of HTML markup 
+// const cardsHtml = deck.reduce(function(html, card) {
+//   return html + `<div class="card ${card.face}"></div>`;
+// }, '');
+container.innerHTML = cardsHtml;
+}
+
+function getPlayerCards() {
+    for (i = 0; i < 2; i++) {
+        const rndIdx = Math.floor(Math.random() * masterDeck.length);
+        playersHand.push(masterDeck.splice(rndIdx, 1)[0]);
+    }
+    renderDeckInContainer(playersHand, playerContainer);
+};
+
+
+function render() {
+    getPlayerCards(); 
+  }
+
+function init() {
+    playersHand = [];
+    winner = null;
+    getPlayerCards();
+    render();
 }
