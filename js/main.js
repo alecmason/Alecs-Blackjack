@@ -18,6 +18,8 @@ let hitBtnEl = document.getElementById('hit-btn')
     .addEventListener('click', playerHit);
 let stayBtnEl = document.getElementById('stay-btn')
     .addEventListener('click', playerStay);
+let restartBtnEl = document.getElementById('restart-btn')
+    .addEventListener('click', restart);
 
 // let playAgainEl = document.getElementById('play-again-btn');
 
@@ -105,7 +107,10 @@ function playerStay() {
         dealersCardScore = calculateCardScore(dealersHand);
     }
     checkCardScore(playersCardScore, dealersCardScore);
+}
 
+function restart() {
+    init();
 }
 
 function calculateCardScore(hand) {
@@ -142,6 +147,7 @@ function render() {
 function init() {
     playersHand = [];
     dealersHand = [];
+    let hitButton = document.getElementById('hit-btn').disabled = false;
     winner = null;
     shuffledDeck = getNewShuffledDeck();
     dealCards(playersHand, playerContainer);

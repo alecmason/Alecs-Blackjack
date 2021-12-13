@@ -9,6 +9,7 @@ body {
 h1 {
 	display: flex;
 	justify-content: center;
+	text-align: center;
 	background-color: red;
 	color: gold;
 	margin: auto;
@@ -60,7 +61,7 @@ h2 {
 }
 
 #hit-btn {
-	background-color: #4CAF50; /* Green */
+	background-color: #4CAF50; 
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -68,10 +69,11 @@ h2 {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   }
 
 #stay-btn {
-	background-color: #ff0000; /* Green */
+	background-color: #ff0000; 
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -79,8 +81,27 @@ h2 {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   }
 
   #hit-btn[disabled] {
 	  background-color: grey;
+  }
+
+  #restart-btn-container {
+	  display: flex;
+	  justify-content: center;	  
+  }
+
+  #restart-btn {
+	margin: 10px;
+	background-color: orange;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   }
