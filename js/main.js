@@ -19,7 +19,7 @@ let hitBtnEl = document.getElementById('hit-btn')
 let stayBtnEl = document.getElementById('stay-btn')
     .addEventListener('click', playerStay);
 
-    // let playAgainEl = document.getElementById('play-again-btn');
+// let playAgainEl = document.getElementById('play-again-btn');
 
 /* functions */
 function buildMasterDeck() {
@@ -56,18 +56,18 @@ function getNewShuffledDeck() {
 init();
 
 function renderDeckInContainer(deck, container) {
-container.innerHTML = '';
-// Let's build the cards as a string of HTML
-let cardsHtml = '';
-deck.forEach(function(card) {
-    cardsHtml += `<div class="card ${card.face}"></div>`;
-});
+    container.innerHTML = '';
+    // Let's build the cards as a string of HTML
+    let cardsHtml = '';
+    deck.forEach(function (card) {
+        cardsHtml += `<div class="card ${card.face}"></div>`;
+    });
 
-// Or, use reduce to 'reduce' the array into a single thing - in this case a string of HTML markup 
-// const cardsHtml = deck.reduce(function(html, card) {
-//   return html + `<div class="card ${card.face}"></div>`;
-// }, '');
-container.innerHTML = cardsHtml;
+    // Or, use reduce to 'reduce' the array into a single thing - in this case a string of HTML markup 
+    // const cardsHtml = deck.reduce(function(html, card) {
+    //   return html + `<div class="card ${card.face}"></div>`;
+    // }, '');
+    container.innerHTML = cardsHtml;
 }
 
 function dealCards(hand, container) {
@@ -80,13 +80,13 @@ function dealCards(hand, container) {
 function playerHit() {
     if (playersCardScore < 21) {
         const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
-        playersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);   
+        playersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);
     }
 
     if (dealersCardScore < 17) {
         const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
-        dealersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);   
-    } 
+        dealersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);
+    }
     render();
 
     playersCardScore = calculateCardScore(playersHand);
@@ -97,23 +97,47 @@ function playerHit() {
 
 function playerStay() {
     console.log('stay button');
+    let hitButton = document.getElementById('hit-btn').disabled = true;
+    while (dealersCardScore < 17) {
+        const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
+        dealersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);
+        renderDeckInContainer(dealersHand, dealerContainer);
+        dealersCardScore = calculateCardScore(dealersHand);
+    }
+    checkCardScore(playersCardScore, dealersCardScore);
+
 }
 
-function calculateCardScore(hand){
-    return hand.reduce((a,b) => a + b.value, 0);
+function calculateCardScore(hand) {
+    return hand.reduce((a, b) => a + b.value, 0);
 }
 
 function checkCardScore(playerScore, dealerScore) {
     if (dealersCardScore === 21) {
         console.log('Dealer wins with 21');
+        let hitButton = document.getElementById('hit-btn').disabled = true;
         // overlay message and restart game button
+    } else if (playersCardScore === 21 && dealersCardScore === 21) {
+        console.log('Dealer wins with 21. both 21');
+        let hitButton = document.getElementById('hit-btn').disabled = true;
+        // overlay message and restart button
+    } else if (playersCardScore > 21) {
+        console.log('player busts');
+        let hitButton = document.getElementById('hit-btn').disabled = true;
+        // overlay message and restart button
+    } else if (dealersCardScore > 21) {
+        console.log('dealers busts');
+        let hitButton = document.getElementById('hit-btn').disabled = true;
+    } else if (dealersCardScore > playersCardScore && playersCardScore < 21) {
+        console.log('dealer wins');
+        let hitButton = document.getElementById('hit-btn').disabled = true;
     }
 }
 
 function render() {
     renderDeckInContainer(playersHand, playerContainer);
     renderDeckInContainer(dealersHand, dealerContainer);
-  }
+}
 
 function init() {
     playersHand = [];

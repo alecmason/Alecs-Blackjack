@@ -59,8 +59,6 @@ h2 {
 	justify-content: space-around;
 }
 
-
-
 #hit-btn {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -81,4 +79,8 @@ h2 {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+  }
+
+  #hit-btn[disabled] {
+	  background-color: grey;
   }
