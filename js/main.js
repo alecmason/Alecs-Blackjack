@@ -98,7 +98,7 @@ function playerHit() {
 }
 
 function playerStay() {
-    let hitButton = document.getElementById('hit-btn').disabled = true;
+    let hitButtonEl = document.getElementById('hit-btn').disabled = true;
     while (dealersCardScore < 17) {
         const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
         dealersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);
@@ -106,12 +106,14 @@ function playerStay() {
         dealersCardScore = calculateCardScore(dealersHand);
     }
     displayScore();
-    if (playersCardScore < 21 && playersCardScore > dealersCardScore) {
-        console.log('player wins > dealers');
-        let hitButton = document.getElementById('hit-btn').disabled = true;
-    } else if (dealersCardScore < 21 && playersCardScore < dealersCardScore) {
-        console.log('dealer wins > players');
-        let hitButton = document.getElementById('hit-btn').disabled = true;
+    checkCardScore();
+    
+    if (dealersCardScore >= playersCardScore && dealersCardScore <= 21){
+        console.log('dealers wins !!');
+        hitButtonEl.disabled = true;
+    } else if (playersCardScore > dealersCardScore && playersCardScore <= 21){
+        console.log('player wins !!');
+        hitButtonEl.disabled = true;
     }
 }
 
@@ -125,20 +127,24 @@ function calculateCardScore(hand) {
 
 function checkCardScore() {
 
+    let hitButtonEl = document.getElementById('hit-btn');
     displayScore();
 
     if (dealersCardScore === 21) {
         console.log('Dealer wins with 21');
-        let hitButton = document.getElementById('hit-btn').disabled = true;
+        hitButtonEl.disabled = true;
     } else if (playersCardScore === 21 && dealersCardScore === 21) {
         console.log('Dealer wins with 21. both 21');
-        let hitButton = document.getElementById('hit-btn').disabled = true;
+        hitButtonEl.disabled = true;
     } else if (playersCardScore > 21) {
         console.log('player busts > 21');
-        let hitButton = document.getElementById('hit-btn').disabled = true;
+        hitButtonEl.disabled = true;
     } else if (dealersCardScore > 21) {
         console.log('dealers busts > 21');
-        let hitButton = document.getElementById('hit-btn').disabled = true;
+        hitButtonEl.disabled = true;
+    } else if (playersCardScore === dealersCardScore){
+        console.log('dealers wins same #');
+        hitButtonEl.disabled = true;
     }
 }
 
@@ -160,7 +166,6 @@ function init() {
     playersHand = [];
     dealersHand = [];
     let hitButton = document.getElementById('hit-btn').disabled = false;
-    winner = null;
     shuffledDeck = getNewShuffledDeck();
     dealCards(playersHand, playerContainer);
     dealCards(dealersHand, dealerContainer);
