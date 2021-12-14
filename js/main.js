@@ -105,7 +105,10 @@ function playerStay() {
         renderDeckInContainer(dealersHand, dealerContainer);
         dealersCardScore = calculateCardScore(dealersHand);
     }
-    checkCardScore();
+    displayScore();
+    if (playersCardScore > dealersCardScore) {
+        console.log('player wins > dealers');
+    }
 }
 
 function restart() {
@@ -117,28 +120,31 @@ function calculateCardScore(hand) {
 }
 
 function checkCardScore() {
+
+    displayScore();
+
     if (dealersCardScore === 21) {
         console.log('Dealer wins with 21');
         let hitButton = document.getElementById('hit-btn').disabled = true;
-        // overlay message and restart game button
     } else if (playersCardScore === 21 && dealersCardScore === 21) {
         console.log('Dealer wins with 21. both 21');
         let hitButton = document.getElementById('hit-btn').disabled = true;
-        // overlay message and restart button
     } else if (playersCardScore > 21) {
-        console.log('player busts');
+        console.log('player busts > 21');
         let hitButton = document.getElementById('hit-btn').disabled = true;
-        // overlay message and restart button
     } else if (dealersCardScore > 21) {
-        console.log('dealers busts');
-        let hitButton = document.getElementById('hit-btn').disabled = true;
-    } else if (dealersCardScore > playersCardScore && playersCardScore < 21) {
-        console.log('dealer wins');
-        let hitButton = document.getElementById('hit-btn').disabled = true;
-    } else if (playersCardScore === dealersCardScore) {
-        console.log('Dealers win: both same ');
+        console.log('dealers busts > 21');
         let hitButton = document.getElementById('hit-btn').disabled = true;
     }
+}
+
+function displayScore(){
+    const dealersScoreEl = document.getElementById('dealers-hand-score');
+    const playersScoreEl = document.getElementById('players-hand-score');
+
+    dealersScoreEl.innerText = `Dealers Hand = ${dealersCardScore}`;
+    playersScoreEl.innerText = `Players Hand = ${playersCardScore}`;
+
 }
 
 function render() {
@@ -156,5 +162,6 @@ function init() {
     dealCards(dealersHand, dealerContainer);
     playersCardScore = calculateCardScore(playersHand);
     dealersCardScore = calculateCardScore(dealersHand);
+    displayScore();
     render();
 }
