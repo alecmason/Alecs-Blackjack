@@ -98,7 +98,6 @@ function playerHit() {
 }
 
 function playerStay() {
-    console.log('stay button');
     let hitButton = document.getElementById('hit-btn').disabled = true;
     while (dealersCardScore < 17) {
         const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
@@ -106,7 +105,7 @@ function playerStay() {
         renderDeckInContainer(dealersHand, dealerContainer);
         dealersCardScore = calculateCardScore(dealersHand);
     }
-    checkCardScore(playersCardScore, dealersCardScore);
+    checkCardScore();
 }
 
 function restart() {
@@ -117,7 +116,7 @@ function calculateCardScore(hand) {
     return hand.reduce((a, b) => a + b.value, 0);
 }
 
-function checkCardScore(playerScore, dealerScore) {
+function checkCardScore() {
     if (dealersCardScore === 21) {
         console.log('Dealer wins with 21');
         let hitButton = document.getElementById('hit-btn').disabled = true;
@@ -135,6 +134,9 @@ function checkCardScore(playerScore, dealerScore) {
         let hitButton = document.getElementById('hit-btn').disabled = true;
     } else if (dealersCardScore > playersCardScore && playersCardScore < 21) {
         console.log('dealer wins');
+        let hitButton = document.getElementById('hit-btn').disabled = true;
+    } else if (playersCardScore === dealersCardScore) {
+        console.log('Dealers win: both same ');
         let hitButton = document.getElementById('hit-btn').disabled = true;
     }
 }
