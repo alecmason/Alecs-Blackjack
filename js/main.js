@@ -106,8 +106,12 @@ function playerStay() {
         dealersCardScore = calculateCardScore(dealersHand);
     }
     displayScore();
-    if (playersCardScore > dealersCardScore) {
+    if (playersCardScore < 21 && playersCardScore > dealersCardScore) {
         console.log('player wins > dealers');
+        let hitButton = document.getElementById('hit-btn').disabled = true;
+    } else if (dealersCardScore < 21 && playersCardScore < dealersCardScore) {
+        console.log('dealer wins > players');
+        let hitButton = document.getElementById('hit-btn').disabled = true;
     }
 }
 
