@@ -183,8 +183,8 @@ function checkCardScore() {
 }
 
 function displayScore(){
-    dealersScoreEl.innerText = `Dealers Hand = ${dealersCardScore}`;
-    playersScoreEl.innerText = `Players Hand = ${playersCardScore}`;
+    dealersScoreEl.innerText = `The Dealer's hand is ${dealersCardScore}`;
+    playersScoreEl.innerText = `Your Hand is ${playersCardScore}`;
 }
 
 function render() {
