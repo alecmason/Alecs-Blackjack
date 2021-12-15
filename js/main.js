@@ -12,6 +12,8 @@ let playersCardScore, dealersCardScore;
 /* cached elements */
 const playerContainer = document.getElementById('players-hand-container');
 const dealerContainer = document.getElementById('dealers-hand-container');
+const dealersScoreEl = document.getElementById('dealers-hand-score');
+const playersScoreEl = document.getElementById('players-hand-score');
 
 /* event listeners */
 let hitBtnEl = document.getElementById('hit-btn')
@@ -111,14 +113,26 @@ function playerStay() {
     if (dealersCardScore >= playersCardScore && dealersCardScore <= 21){
         console.log('dealers wins !!');
         hitButtonEl.disabled = true;
+        dealersScoreEl.style.border = 'solid limegreen';
+        dealersScoreEl.style.color = 'limegreen';
+        playersScoreEl.style.border = 'solid red';
+        playersScoreEl.style.color = 'red';
     } else if (playersCardScore > dealersCardScore && playersCardScore <= 21){
         console.log('player wins !!');
         hitButtonEl.disabled = true;
+        dealersScoreEl.style.border = 'solid red';
+        dealersScoreEl.style.color = 'red';
+        playersScoreEl.style.border = 'solid limegreen';
+        playersScoreEl.style.color = 'limegreen';
     }
 }
 
 function restart() {
     init();
+    playersScoreEl.style.border = '';
+    playersScoreEl.style.color = 'white';
+    dealersScoreEl.style.border = '';
+    dealersScoreEl.style.color = 'white';
 }
 
 function calculateCardScore(hand) {
@@ -133,28 +147,44 @@ function checkCardScore() {
     if (dealersCardScore === 21) {
         console.log('Dealer wins with 21');
         hitButtonEl.disabled = true;
+        dealersScoreEl.style.border = 'solid limegreen';
+        dealersScoreEl.style.color = 'limegreen';
+        playersScoreEl.style.border = 'solid red';
+        playersScoreEl.style.color = 'red';
     } else if (playersCardScore === 21 && dealersCardScore === 21) {
         console.log('Dealer wins with 21. both 21');
         hitButtonEl.disabled = true;
+        dealersScoreEl.style.border = 'solid limegreen';
+        dealersScoreEl.style.color = 'limegreen';
+        playersScoreEl.style.border = 'solid red';
+        playersScoreEl.style.color = 'red';
     } else if (playersCardScore > 21) {
         console.log('player busts > 21');
         hitButtonEl.disabled = true;
+        dealersScoreEl.style.border = 'solid limegreen';
+        dealersScoreEl.style.color = 'limegreen';
+        playersScoreEl.style.border = 'solid red';
+        playersScoreEl.style.color = 'red';
     } else if (dealersCardScore > 21) {
         console.log('dealers busts > 21');
         hitButtonEl.disabled = true;
+        dealersScoreEl.style.border = 'solid red';
+        dealersScoreEl.style.color = 'red';
+        playersScoreEl.style.border = 'solid limegreen';
+        playersScoreEl.style.color = 'limegreen';
     } else if (playersCardScore === dealersCardScore){
         console.log('dealers wins same #');
         hitButtonEl.disabled = true;
+        dealersScoreEl.style.border = 'solid limegreen';
+        dealersScoreEl.style.color = 'limegreen';
+        playersScoreEl.style.border = 'solid red';
+        playersScoreEl.style.color = 'red';
     }
 }
 
 function displayScore(){
-    const dealersScoreEl = document.getElementById('dealers-hand-score');
-    const playersScoreEl = document.getElementById('players-hand-score');
-
     dealersScoreEl.innerText = `Dealers Hand = ${dealersCardScore}`;
     playersScoreEl.innerText = `Players Hand = ${playersCardScore}`;
-
 }
 
 function render() {
