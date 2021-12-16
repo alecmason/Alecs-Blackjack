@@ -1,6 +1,8 @@
 # Alec's Blackjack
 project - 1 - blackjack
 
+https://alecmason.github.io/project-1-blackjack/
+
 ## The game on startup
 <img src="images/finished_init.png">
 The game begins with the dealer and player already dealt their first hand.
