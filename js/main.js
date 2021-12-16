@@ -112,6 +112,8 @@ function playerStay() {
     
     if (dealersCardScore >= playersCardScore && dealersCardScore <= 21){
         console.log('dealers wins !!');
+        dealersScoreEl.innerText = `The Dealer wins with ${dealersCardScore}`;
+
         hitButtonEl.disabled = true;
         dealersScoreEl.style.border = 'solid limegreen';
         dealersScoreEl.style.color = 'limegreen';
@@ -119,6 +121,9 @@ function playerStay() {
         playersScoreEl.style.color = 'red';
     } else if (playersCardScore > dealersCardScore && playersCardScore <= 21){
         console.log('player wins !!');
+
+        playersScoreEl.innerText = `You win with ${playersCardScore}`;
+    
         hitButtonEl.disabled = true;
         dealersScoreEl.style.border = 'solid red';
         dealersScoreEl.style.color = 'red';
@@ -146,6 +151,8 @@ function checkCardScore() {
 
     if (dealersCardScore === 21) {
         console.log('Dealer wins with 21');
+        dealersScoreEl.innerText = `The Dealer wins with ${dealersCardScore}`;
+
         hitButtonEl.disabled = true;
         dealersScoreEl.style.border = 'solid limegreen';
         dealersScoreEl.style.color = 'limegreen';
@@ -153,6 +160,8 @@ function checkCardScore() {
         playersScoreEl.style.color = 'red';
     } else if (playersCardScore === 21 && dealersCardScore === 21) {
         console.log('Dealer wins with 21. both 21');
+        dealersScoreEl.innerText = `The Dealer wins with ${dealersCardScore}`;
+
         hitButtonEl.disabled = true;
         dealersScoreEl.style.border = 'solid limegreen';
         dealersScoreEl.style.color = 'limegreen';
@@ -160,6 +169,8 @@ function checkCardScore() {
         playersScoreEl.style.color = 'red';
     } else if (playersCardScore > 21) {
         console.log('player busts > 21');
+        playersScoreEl.innerText = `You've busted with ${playersCardScore}`;
+
         hitButtonEl.disabled = true;
         dealersScoreEl.style.border = 'solid limegreen';
         dealersScoreEl.style.color = 'limegreen';
@@ -167,6 +178,8 @@ function checkCardScore() {
         playersScoreEl.style.color = 'red';
     } else if (dealersCardScore > 21) {
         console.log('dealers busts > 21');
+        dealersScoreEl.innerText = `The Dealer busts with ${dealersCardScore}`;
+
         hitButtonEl.disabled = true;
         dealersScoreEl.style.border = 'solid red';
         dealersScoreEl.style.color = 'red';
@@ -174,6 +187,9 @@ function checkCardScore() {
         playersScoreEl.style.color = 'limegreen';
     } else if (playersCardScore === dealersCardScore){
         console.log('dealers wins same #');
+        dealersScoreEl.innerText = `The Dealer wins the tie with ${dealersCardScore}`;
+        playersScoreEl.innerText = `Your Hand is ${playersCardScore}`;
+
         hitButtonEl.disabled = true;
         dealersScoreEl.style.border = 'solid limegreen';
         dealersScoreEl.style.color = 'limegreen';

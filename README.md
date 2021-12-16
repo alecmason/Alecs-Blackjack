@@ -20,3 +20,6 @@ The game begins with the dealer and player already dealt their first hand.
 ## icebox - future enhancements
 1. "Money" to gamble and to keep score
 2. individual user logins, a database of users, and global scoreboard
+3. implement doubling down and additional blackjack plays
+3. implement additional players 
+4. let individual players decide if Ace is 1 or 11
