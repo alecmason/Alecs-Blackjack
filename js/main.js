@@ -90,10 +90,6 @@ function playerHit() {
         playersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);
     }
 
-    if (dealersCardScore < 17) {
-        const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
-        dealersHand.push(shuffledDeck.splice(rndIdx, 1)[0]);
-    }
     render();
 
     playersCardScore = calculateCardScore(playersHand);
