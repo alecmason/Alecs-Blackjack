@@ -74,6 +74,7 @@ function renderDeckInContainer(deck, container) {
     container.innerHTML = cardsHtml;
 }
 
+// deal cards to the player and dealers hand array
 function dealCards(hand, container) {
     for (i = 0; i < 2; i++) {
         const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
@@ -81,6 +82,8 @@ function dealCards(hand, container) {
     }
 };
 
+/* One of the main functions of the game.
+allows the player to add another card to their hand and calcualates the cardScore of the player and dealer */
 function playerHit() {
     if (playersCardScore < 21) {
         const rndIdx = Math.floor(Math.random() * shuffledDeck.length);
@@ -99,6 +102,7 @@ function playerHit() {
     checkCardScore(playersCardScore, dealersCardScore);
 }
 
+/* Another main function of the game. This function does some of the game logic and comparing logic to determine the winner. Will display in color and text the winner by score or loser by busting. */
 function playerStay() {
     let hitButtonEl = document.getElementById('hit-btn').disabled = true;
     while (dealersCardScore < 17) {
@@ -132,6 +136,7 @@ function playerStay() {
     }
 }
 
+/* the restart function invokes the init() function to reset the state variables and return the color of the text back to white */
 function restart() {
     init();
     playersScoreEl.style.border = '';
@@ -140,10 +145,12 @@ function restart() {
     dealersScoreEl.style.color = 'white';
 }
 
+/* this function takes the dealers and players hand array and uses the reduce() method to calcualte the total value and return it to a variable to compare the cardScores */
 function calculateCardScore(hand) {
     return hand.reduce((a, b) => a + b.value, 0);
 }
 
+/* the function houses most of the game logic, comparing the dealers card score to the players card score. This functino will disable the HIT button if certain win/lose conditions are met. The players and dealers text will turn a certain color and the text will change based on winning or losing conditions. */
 function checkCardScore() {
 
     let hitButtonEl = document.getElementById('hit-btn');
@@ -198,16 +205,19 @@ function checkCardScore() {
     }
 }
 
+/* this function is for initially displaying the dealers and players score but will be updated to display who has won or lost as the game is played. */
 function displayScore(){
     dealersScoreEl.innerText = `The Dealer's hand is ${dealersCardScore}`;
     playersScoreEl.innerText = `Your Hand is ${playersCardScore}`;
 }
 
+/* the render function displays the cards for the dealer and player in a div in html */
 function render() {
     renderDeckInContainer(playersHand, playerContainer);
     renderDeckInContainer(dealersHand, dealerContainer);
 }
 
+/* the initialize function begins the start of the game with initial values */
 function init() {
     playersHand = [];
     dealersHand = [];
