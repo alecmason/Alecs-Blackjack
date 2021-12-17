@@ -1,7 +1,7 @@
 # Alec's Blackjack
 project - 1 - blackjack
 
-player here -> https://alecmason.github.io/project-1-blackjack/
+play here -> https://alecmason.github.io/project-1-blackjack/
 
 ## The game on startup
 <img src="images/finished_init.png">
